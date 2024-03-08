@@ -111,7 +111,7 @@ KD4_Shambhuraj_83615>select * from ORDERS  where NOT ((Odate = '1990-10-03' OR S
 ****************************************assignment 5 QUETION-6 ********************************************************************
 
 
-KD4_Shambhuraj_83615>select * from SALESPEOPLE;
+6.KD4_Shambhuraj_83615>select * from SALESPEOPLE;
 +------+---------+-----------+------+
 | Snum | Sname   | City      | Comm |
 +------+---------+-----------+------+
@@ -122,6 +122,20 @@ KD4_Shambhuraj_83615>select * from SALESPEOPLE;
 | 1003 | Axelrod | New Tork  | 0.10 |
 +------+---------+-----------+------+
 5 rows in set (0.00 sec)
+
+
+
+__________________________OR_______________________________________________
+
+
+
+KD4_Shambhuraj_83615>select * from SALESPEOPLE where Comm between .12 and .14;
++------+--------+----------+------+
+| Snum | Sname  | City     | Comm |
++------+--------+----------+------+
+| 1002 | Serres | San Jose | 0.13 |
++------+--------+----------+------+
+1 row in set (0.00 sec)
 
 
 
