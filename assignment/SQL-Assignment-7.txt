@@ -24,11 +24,11 @@ KD4_Shambhuraj_83615>select count(*) from ORDERS where Odate= '1990-10-03';
 ===================================QUETION 2 =================================
 
 
-KD4_Shambhuraj_83615>select count(*) from CUSTOMERS where City!=null;
+KD4_Shambhuraj_83615>select count(*) from CUSTOMERS where City is not null;
 +----------+
 | count(*) |
 +----------+
-|        0 |
+|        7 |
 +----------+
 1 row in set (0.00 sec)
 
