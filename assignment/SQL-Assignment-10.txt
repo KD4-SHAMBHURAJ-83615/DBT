@@ -1,0 +1,22 @@
+====================================ASSIGNMENT 10 ===================================
+
+
+
+
+
+========================================QUETION 1 =============================================
+
+
+
+
+
+
+KD4_Shambhuraj_83615>select a.Sname, b.Sname, a.City from SALESPEOPLE a, SALESPEOPLE b where a.City=b.City and a.Sname!=b.Sname AND a.sname>b.sname;
++-------+--------+--------+
+| Sname | Sname  | City   |
++-------+--------+--------+
+| Peel  | Motika | London |
++-------+--------+--------+
+1 row in set (0.00 sec)
+
+
