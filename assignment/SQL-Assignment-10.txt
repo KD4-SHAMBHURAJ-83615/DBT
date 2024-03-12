@@ -20,3 +20,22 @@ KD4_Shambhuraj_83615>select a.Sname, b.Sname, a.City from SALESPEOPLE a, SALESPE
 1 row in set (0.00 sec)
 
 
+
+
+
+========================================QUETION 2 =============================================
+
+
+
+
+
+KD4_Shambhuraj_83615>select a.Cname ,b.City from CUSTOMERS a, CUSTOMERS b where a.Rating=b.Rating and b.Cname= "Hoffman";
++---------+--------+
+| Cname   | City   |
++---------+--------+
+| Hoffman | London |
+| Clemens | London |
+| Pereira | London |
++---------+--------+
+3 rows in set (0.01 sec)
+
