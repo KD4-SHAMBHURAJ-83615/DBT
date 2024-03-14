@@ -26,16 +26,16 @@ KD4_Shambhuraj_83615>select *from ORDERS where Cnum= (select Cnum from CUSTOMERS
 
 
 
-KD4_Shambhuraj_83615>select Cname ,Rating from CUSTOMERS where Rating >(select avg(Rating) from CUSTOMERS);
-+----------+--------+
-| Cname    | Rating |
-+----------+--------+
-| Giovanni |    200 |
-| Liu      |    200 |
-| Grass    |    300 |
-| Cisneros |    300 |
-+----------+--------+
-4 rows in set (0.00 sec)
+KD4_Shambhuraj_83615>select Cname,Rating from CUSTOMERS where Cnum IN (select Cnum from ORDERS where Amt>(select avg(Amt) from ORDERS));
++---------+--------+
+| Cname   | Rating |
++---------+--------+
+| Liu     |    200 |
+| Clemens |    100 |
++---------+--------+
+2 rows in set (0.01 sec)
+
+
 
 
 ==========================================QUETION 3 ==========================================
