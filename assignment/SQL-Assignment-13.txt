@@ -1,0 +1,61 @@
+========================================ASSIGNMENT 12 ===================================================================
+
+
+
+
+
+======================================== QUETION 1 ===================================================================
+
+
+
+
+
+KD4_Shambhuraj_83615>select Cname,City,'HIGH RATING' Rating from CUSTOMERS where Rating>200 union select Cname,City,'LOW RATING'  Rating from CUSTOMERS where Rating=200;
++----------+----------+-------------+
+| Cname    | City     | Rating      |
++----------+----------+-------------+
+| Grass    | Berlin   | HIGH RATING |
+| Cisneros | San Jose | HIGH RATING |
+| Giovanni | Rome     | LOW RATING  |
+| Liu      | San Jose | LOW RATING  |
++----------+----------+-------------+
+4 rows in set (0.00 sec)
+
+
+======================================== QUETION 2 ===================================================================
+
+KD4_Shambhuraj_83615>select concat(s1.Sname ," (SALESPERSON)") 'Name',s1.Snum 'No.' from SALESPEOPLE s1,(select Snum from ORDERS group by Snum having count(Snum)>1)as abcd where abcd.Snum=s1.Snum union (select concat(c1.Cname," (CUSTOMERS)"),c1.Cnum from CUSTOMERS c1,(select Cnum from ORDERS group by Cnum having count(Cnum)>1)as xyz where xyz.Cnum=c1.Cnum) order by Name asc;
++----------------------+------+
+| Name                 | No.  |
++----------------------+------+
+| Cisneros (CUSTOMERS) | 2008 |
+| Clemens (CUSTOMERS)  | 2006 |
+| Grass (CUSTOMERS)    | 2004 |
+| Peel (SALESPERSON)   | 1001 |
+| Rifkin (SALESPERSON) | 1007 |
+| Serres (SALESPERSON) | 1002 |
++----------------------+------+
+6 rows in set (0.00 sec)
+
+
+
+
+
+======================================== QUETION 3 ===================================================================
+
+KD4_Shambhuraj_83615>select Snum from SALESPEOPLE where City='San Jose' union select Cnum from CUSTOMERS where City='San Jose' union select Onum from ORDERS where odate='1990-10-03';
++------+
+| Snum |
++------+
+| 1002 |
+| 2003 |
+| 2008 |
+| 3001 |
+| 3003 |
+| 3002 |
+| 3005 |
+| 3006 |
++------+
+8 rows in set (0.01 sec)
+
+
