@@ -1,0 +1,214 @@
+========================================ASSIGNMENT MONGODB ===========================================
+
+==================================================1===================================================
+
+
+
+sudo apt-get install gnupg curl
+
+================================================== 2 ===================================================
+
+curl -fsSL https://www.mongodb.org/static/pgp/server-7.0.asc | \sudo gpg -o /usr/share/keyrings/mongodb-server-7.0.gpg \--dearmor
+
+
+
+
+================================================== 3 ===================================================
+
+
+echo "deb [ arch=amd64,arm64 signed-by=/usr/share/keyrings/mongodb-server-7.0.gpg ] https://repo.mongodb.org/apt/ubuntu jammy/mongodb-org/7.0 multiverse" | sudo tee /etc/apt/sources.list.d/mongodb-org-7.0.list
+
+
+
+================================================== 4 ===================================================
+
+sudo systemctl start mongod
+
+sudo systemctl daemon-reload
+
+sudo systemctl status mongod
+
+================================================== 5 ===================================================
+
+
+sunbeam@sunbeam-HP-Pavilion-Gaming-Laptop-15-ec2xxx:~$ mongosh
+Current Mongosh Log ID:	65f57120b5030268e3db83af
+Connecting to:		mongodb://127.0.0.1:27017/?directConnection=true&serverSelectionTimeoutMS=2000&appName=mongosh+2.2.0
+Using MongoDB:		7.0.6
+Using Mongosh:		2.2.0
+
+For mongosh info see: https://docs.mongodb.com/mongodb-shell/
+
+------
+   The server generated these startup warnings when booting
+   2024-03-16T14:28:06.620+05:30: Using the XFS filesystem is strongly recommended with the WiredTiger storage engine. See http://dochub.mongodb.org/core/prodnotes-filesystem
+   2024-03-16T14:28:07.143+05:30: Access control is not enabled for the database. Read and write access to data and configuration is unrestricted
+   2024-03-16T14:28:07.143+05:30: vm.max_map_count is too low
+------
+
+test> 
+
+
+
+
+
+================================================== 6 ===================================================
+
+
+shambhuraj> show dbs
+admin   40.00 KiB
+config  60.00 KiB
+local   72.00 KiB
+
+
+
+================================================== 7 ===================================================
+
+
+test> use CDAC
+switched to db CDAC
+
+
+================================================== 8 ===================================================
+
+CDAC> show collections
+LIBRARY
+
+
+================================================== 9 ===================================================
+
+
+CDAC> db.createCollection ("LIBRARY")
+{ ok: 1 }
+
+================================================== 10 ===================================================
+
+CDAC> db.LIBRARY.insert({title:'MongoDB programming',author:'Sameer',likes:100})
+DeprecationWarning: Collection.insert() is deprecated. Use insertOne, insertMany, or bulkWrite.
+{
+  acknowledged: true,
+  insertedIds: { '0': ObjectId('65f567b79c68240c6cdb83b0') }
+}
+
+================================================== 11 ===================================================
+
+CDAC> db.LIBRARY.find()
+[
+  {
+    _id: ObjectId('65f567b79c68240c6cdb83b0'),  <--------id field
+    title: 'MongoDB programming',
+    author: 'Sameer',
+    likes: 100
+  }
+]
+
+
+================================================== 12 ===================================================
+
+
+CDAC> db.LIBRARY.insert({title:'MYSQL programming',author:['Sameer','Jill'],likes:200})
+{
+  acknowledged: true,
+  insertedIds: { '0': ObjectId('65f5692f9c68240c6cdb83b1') }
+  
+  
+  
+  ================================================== 13 ===================================================
+  
+  CDAC> db.LIBRARY.find()
+[
+  {
+    _id: ObjectId('65f567b79c68240c6cdb83b0'),
+    title: 'MongoDB programming',
+    author: 'Sameer',
+    likes: 100
+  },
+  {
+    _id: ObjectId('65f5692f9c68240c6cdb83b1'),
+    title: 'MYSQL programming',
+    author: [ 'Sameer', 'Jill' ],
+    likes: 200
+  }
+]
+
+
+  ================================================== 14 ===================================================
+  
+  CDAC> db.LIBRARY.findOne()
+{
+  _id: ObjectId('65f567b79c68240c6cdb83b0'),
+  title: 'MongoDB programming',
+  author: 'Sameer',
+  likes: 100
+}
+
+  
+================================================== 15 ===================================================
+
+CDAC> db.LIBRARY.find().pretty()
+[
+  {
+    _id: ObjectId('65f567b79c68240c6cdb83b0'),
+    title: 'MongoDB programming',
+    author: 'Sameer',
+    likes: 100
+  },
+  {
+    _id: ObjectId('65f5692f9c68240c6cdb83b1'),
+    title: 'MYSQL programming',
+    author: [ 'Jack', 'Jill' ],
+    likes: 200
+  }
+]
+
+
+================================================== 16 ===================================================
+
+
+CDAC> db.LIBRARY.update({author:'Sameer'},{$set:{author:'Sameer Dehadrai'}})
+{
+  acknowledged: true,
+  insertedId: null,
+  matchedCount: 1,
+  modifiedCount: 1,
+  upsertedCount: 0
+}
+CDAC> db.LIBRARY.findOne()
+{
+  _id: ObjectId('65f567b79c68240c6cdb83b0'),
+  title: 'MongoDB programming',
+  author: 'Sameer Dehadrai',
+  likes: 100
+}
+CDAC>
+
+  
+  ================================================== 17 ===================================================
+  
+  
+  
+  CDAC> db.LIBRARY.remove({likes:100})
+DeprecationWarning: Collection.remove() is deprecated. Use deleteOne, deleteMany, findOneAndDelete, or bulkWrite.
+{ acknowledged: true, deletedCount: 1 }
+CDAC> 
+
+  
+  ================================================== 18 ===================================================
+  
+  CDAC> db.LIBRARY.drop()
+true
+
+ 
+  ================================================== 19 =================================================== 
+  
+  CDAC> db.dropDatabase()
+{ ok: 1, dropped: 'CDAC' }
+CDAC> 
+  
+  
+================================================== 20 =================================================== 
+
+
+  CDAC> exit
+sunbeam@sun
+  
